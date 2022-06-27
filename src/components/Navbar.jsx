@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
-import { Box, Stack, IconButton, InputBase, Drawer} from '@mui/material';
+import { Box, Stack, IconButton, InputBase, Drawer } from '@mui/material';
 import { Menu, Search, FavoriteBorder } from '@mui/icons-material';
 
 import DrawerList from './DrawerList';
+import { useSearchContext } from '../contexts/SearchContext';
 
 const Navbar = () => {
 
   const [isOpen, setIsOpen] = useState(false);
+  const [text, setText] = useState("");
+  const { setSearch } = useSearchContext();
 
   const onSubmit = (e) => {
+    setSearch(text.toLowerCase());
     e.preventDefault();
   }
 
@@ -21,7 +25,9 @@ const Navbar = () => {
         justifyContent='space-between'
         backgroundColor="rgb(40,40,40)"
         py={1}
-        px={{ xs: 0, sm: 1, md: 3 }} >
+        px={{ xs: 0, sm: 1, md: 3 }}
+        position="fixed"
+        width="100%" >
         <IconButton sx={{ color: '#fff' }} onClick={() => setIsOpen(true)} >
           <Menu sx={{ fontSize: { xs: '2rem', sm: '3rem' } }} />
         </IconButton>
@@ -38,6 +44,8 @@ const Navbar = () => {
           <InputBase
             sx={{ ml: 1, flex: 1, color: '#fff' }}
             placeholder="Search City"
+            value={text}
+            onInput={(e) => setText(e.target.value)}
           />
           <IconButton type="submit" sx={{ p: '10px', color: '#fff' }}>
             <Search />
@@ -50,7 +58,7 @@ const Navbar = () => {
       <Drawer
         anchor='left'
         open={isOpen}
-        onClose={()=>setIsOpen(false)}
+        onClose={() => setIsOpen(false)}
       >
         <DrawerList setIsOpen={setIsOpen} />
       </Drawer>
