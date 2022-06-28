@@ -11,6 +11,6 @@ export const getForecast = async (search) => {
 };
 
 export const getRealtime = async (search) => {
-    const { data } = await axios.get(`https://api.weatherapi.com/v1/current.json?key=${process.env.REACT_APP_API_KEY}&q=${search}&q=istanbul&aqi=yes`);
+    const { data } = await axios.get(`https://api.weatherapi.com/v1/current.json?key=${process.env.REACT_APP_API_KEY}&q=${search}&aqi=yes`);
     return data;
 };
