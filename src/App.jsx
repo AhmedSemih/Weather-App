@@ -1,5 +1,5 @@
 import React from 'react';
-import {Routes, Route} from 'react-router-dom';
+import {Routes, Route, Navigate} from 'react-router-dom';
 
 import Navbar from './components/Navbar';
 import Hourly from './pages/Hourly';
@@ -18,6 +18,7 @@ const App = () => {
       <Route path='/hourly' element={<Hourly/>} />
       <Route path='/favourites' element={<Favourites/>} />
       <Route path='/astronomy' element={<Astronomy/>} />
+      <Route path='*' element={<Navigate to='/' />} />
     </Routes>
     </>
   )

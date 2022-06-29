@@ -28,3 +28,28 @@ ol {
   -webkit-backdrop-filter: blur(6.7px);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
+
+.search{
+  opacity: .3;
+  transition: .5s;
+}
+
+.search:hover{
+  opacity:1
+}
+
+.anim{
+  position: relative;
+  animation-name: up-and-down;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;  
+}
+
+@keyframes up-and-down{
+  0% {top:7vh;}
+  20%{top:3vh;}
+  50%{top:0vh;}
+  75%{top:3vh;}
+  100%{top:7vh;}
+}

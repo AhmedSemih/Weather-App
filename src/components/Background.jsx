@@ -5,12 +5,14 @@ const Background = ({ children, imageUrl }) => {
     return (
         <Box sx={{
             w: '100vw',
-            height: '100vh',
-            pt:10,
+            height: 'content',
+            minHeight: '100vh',
+            pt: 10,
             backgroundImage: `url(${imageUrl})`,
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
-            backgroundSize: '100vw 100vh'
+            backgroundSize: { xs: '2400px 2000px', sm: '1920px 1300px' },
+            backgroundColor:'rgb(50,50,50)'
         }}>
             {children}
         </Box>
