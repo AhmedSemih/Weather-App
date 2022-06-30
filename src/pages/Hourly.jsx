@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Typography, Grid, CircularProgress } from '@mui/material';
 
-import DoSearchAlert from '../components/DoSearchAlert';
 import Background from '../components/Background';
 import Weatherbar from '../components/Weatherbar';
 import { getForecast } from '../services/ForecastService';
@@ -56,11 +55,7 @@ const Hourly = () => {
 
   } else {
     return (
-      <Background>
-        <Box display="flex" justifyContent="center" >
-          <DoSearchAlert />
-        </Box>
-      </Background>
+      <Background sun={true} />
     )
   }
 

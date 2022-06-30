@@ -6,7 +6,6 @@ import { getForecast } from '../services/ForecastService';
 import BgPicker from '../utils/BgPicker';
 import Background from '../components/Background';
 import Forecastbar from '../components/Forecastbar';
-import Welcome from '../assets/Welcome.jpg';
 
 const Forecast = () => {
 
@@ -53,7 +52,7 @@ const Forecast = () => {
 
   } else {
     return (
-      <Background />
+      <Background sun={true} />
     )
   }
 

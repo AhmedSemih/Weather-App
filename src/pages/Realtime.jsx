@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Typography, CircularProgress } from '@mui/material';
 
-import DoSearchAlert from '../components/DoSearchAlert';
 import Background from '../components/Background';
 import BgPicker from '../utils/BgPicker';
 import { getRealtime } from '../services/ForecastService';
@@ -82,11 +81,7 @@ const Realtime = () => {
 
   } else {
     return (
-      <Background>
-        <Box display="flex" justifyContent="center" >
-          <DoSearchAlert />
-        </Box>
-      </Background>
+      <Background sun={true} />
     )
   }
 

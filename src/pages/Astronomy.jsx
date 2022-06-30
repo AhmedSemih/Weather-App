@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Box, Typography, CircularProgress } from '@mui/material';
 import { WbSunny, Nightlight } from '@mui/icons-material';
 
-import DoSearchAlert from '../components/DoSearchAlert';
 import Background from '../components/Background';
 import { getAstronomy } from '../services/ForecastService';
 import { useSearchContext } from '../contexts/SearchContext';
@@ -66,11 +65,7 @@ const Astronomy = () => {
 
   } else {
     return (
-      <Background>
-        <Box display="flex" justifyContent="center" >
-          <DoSearchAlert />
-        </Box>
-      </Background>
+      <Background sun={true} />
     )
   }
 }
