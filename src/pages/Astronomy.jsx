@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Box, Typography, CircularProgress } from '@mui/material';
 import { WbSunny, Nightlight } from '@mui/icons-material';
 
+import Astro from '../assets/astronomy.jpg';
 import Background from '../components/Background';
 import { getAstronomy } from '../services/ForecastService';
 import { useSearchContext } from '../contexts/SearchContext';
@@ -21,7 +22,7 @@ const Astronomy = () => {
   if (search) {
     if (data) {
       return (
-        <Background imageUrl={"https://images.unsplash.com/photo-1537967520749-fb2dd3c6dcc3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2106&q=80"}>
+        <Background imageUrl={Astro}>
           <Box sx={{
             display: 'flex',
             alignItems: 'center',
