@@ -2,6 +2,7 @@ import React from 'react';
 import {Routes, Route, Navigate} from 'react-router-dom';
 
 import Navbar from './components/Navbar';
+import CookieAlert from './components/CookieAlert';
 import Hourly from './pages/Hourly';
 import Astronomy from './pages/Astronomy';
 import Favourites from './pages/Favourites';
@@ -20,6 +21,7 @@ const App = () => {
       <Route path='/astronomy' element={<Astronomy/>} />
       <Route path='*' element={<Navigate to='/' />} />
     </Routes>
+    <CookieAlert/>
     </>
   )
 }

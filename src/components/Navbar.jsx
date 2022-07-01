@@ -1,20 +1,40 @@
 import React, { useState } from 'react';
 import { Box, Stack, IconButton, InputBase, Drawer } from '@mui/material';
-import { Menu, Search, FavoriteBorder } from '@mui/icons-material';
+import { Menu, Search, FavoriteBorder, Favorite } from '@mui/icons-material';
+import { useCookies } from 'react-cookie';
 
 import DrawerList from './DrawerList';
 import { useSearchContext } from '../contexts/SearchContext';
 
 const Navbar = () => {
 
+  const [cookies, setCookie] = useCookies(['favourites']);
+  const { search, setSearch } = useSearchContext();
+
   const [isOpen, setIsOpen] = useState(false);
-  const [text, setText] = useState("");
-  const { setSearch } = useSearchContext();
+  const [text, setText] = useState(search);
+
 
   const onSubmit = (e) => {
     setSearch(text.toLowerCase());
     e.preventDefault();
-  }
+  };
+
+  const clickFavourite = () => {
+    var favourites = (cookies.favourites || []);
+
+    if (search !== "" && search !== undefined && search !== " " && search !== null) {
+      if (favourites.includes(search)) {
+        let newFavourites = favourites.filter((value) => {
+          return value !== search;
+        });
+        setCookie('favourites', newFavourites, { path: '/' });
+      } else {
+        favourites.push(search)
+        setCookie('favourites', favourites, { path: '/' });
+      }
+    }
+  };
 
   return (
     <>
@@ -52,9 +72,17 @@ const Navbar = () => {
             <Search />
           </IconButton>
         </Box>
-        <IconButton type="submit" sx={{ p: '10px', color: '#fff' }}>
-          <FavoriteBorder sx={{ fontSize: { xs: '2rem', sm: '3rem' } }} />
-        </IconButton>
+        {
+          cookies.favourites && cookies.favourites.includes(search)
+            ?
+            <IconButton onClick={clickFavourite} sx={{ p: '10px', color: '#fff' }}>
+              <Favorite sx={{ fontSize: { xs: '2rem', sm: '3rem' } }} />
+            </IconButton>
+            :
+            <IconButton onClick={clickFavourite} sx={{ p: '10px', color: '#fff' }}>
+              <FavoriteBorder sx={{ fontSize: { xs: '2rem', sm: '3rem' } }} />
+            </IconButton>
+        }
       </Stack>
       <Drawer
         anchor='left'

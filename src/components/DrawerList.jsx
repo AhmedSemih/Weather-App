@@ -35,7 +35,7 @@ const DrawerList = ({ setIsOpen }) => {
                 ))}
             </List>
             <Typography sx={{ fontSize: '.9rem', p: 2 }}>
-                Powered by <a href="https://github.com/AhmedSemih" target="_blank" rel='noreferrer' >Ahmed Semih Erkan</a>
+                Made by <a href="https://github.com/AhmedSemih" target="_blank" rel='noreferrer' >Ahmed Semih Erkan</a>
             </Typography>
         </Box>
     )

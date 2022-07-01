@@ -13,7 +13,7 @@ const Background = ({ children, imageUrl, sun }) => {
             backgroundImage:  imageUrl ? `url(${imageUrl})` : (sun && `url(${Welcome})`) ,
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
-            backgroundSize: imageUrl ? { xs: '2400px 2000px', sm: '1920px 1300px' } : {xs: "640px 360px",sm:"960px 540px" ,md:"1280px 720px",xl:'1920px 1080px'} ,
+            backgroundSize: imageUrl ? { xs: '2400px 2000px', sm: '1920px 1400px' } : {xs: "640px 360px",sm:"960px 540px" ,md:"1280px 720px",xl:'1920px 1080px'} ,
             backgroundColor:'#A6CFE8'
         }}>
             {children}
