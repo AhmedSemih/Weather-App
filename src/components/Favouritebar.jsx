@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Box, Typography, Divider, CircularProgress } from '@mui/material';
 
 import { getRealtime } from '../services/ForecastService';
-import {useSearchContext} from '../contexts/SearchContext';
+import { useSearchContext } from '../contexts/SearchContext';
 
 const Favouritebar = ({ city }) => {
 
-    const navigate=useNavigate();
-    const {setSearch}=useSearchContext();
+    const navigate = useNavigate();
+    const { setSearch, setText } = useSearchContext();
     const [data, setData] = useState("");
 
     useEffect(() => {
@@ -18,8 +18,9 @@ const Favouritebar = ({ city }) => {
         }
     }, [city]);
 
-    const onClickCity=()=>{
+    const onClickCity = () => {
         setSearch(city);
+        setText(city);
         navigate('/');
     }
 
@@ -35,12 +36,12 @@ const Favouritebar = ({ city }) => {
                     alignItems: 'center',
                     p: 1
                 }}>
-                <Typography 
-                fontWeight={800} 
-                sx={{cursor:'pointer'}} 
-                textAlign='center' 
-                fontSize={{ xs: 20, md: 25 }} 
-                onClick={onClickCity}
+                <Typography
+                    fontWeight={800}
+                    sx={{ cursor: 'pointer' }}
+                    textAlign='center'
+                    fontSize={{ xs: 20, md: 25 }}
+                    onClick={onClickCity}
                 >{city.toUpperCase()}</Typography>
                 <img width={90} src={data.condition.icon} alt="weather" />
                 <Box sx={{ display: 'flex', justifyContent: 'space-around', w: '100%' }}>

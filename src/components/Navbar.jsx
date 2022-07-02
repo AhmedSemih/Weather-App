@@ -9,11 +9,9 @@ import { useSearchContext } from '../contexts/SearchContext';
 const Navbar = () => {
 
   const [cookies, setCookie] = useCookies(['favourites']);
-  const { search, setSearch } = useSearchContext();
+  const { search, setSearch, text, setText } = useSearchContext();
 
   const [isOpen, setIsOpen] = useState(false);
-  const [text, setText] = useState(search);
-
 
   const onSubmit = (e) => {
     setSearch(text.toLowerCase());

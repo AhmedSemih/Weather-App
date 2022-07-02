@@ -17,9 +17,14 @@ const Favourites = () => {
       </Box>
       <Box sx={{ display: 'flex', flexDirection: { xs: 'column', lg: 'row' }, alignItems: 'center', minHeight: '60vh', flexWrap: 'wrap' }} >
         {
-          cookies.favourites.map((favourite, index) => {
+           cookies.favourites && cookies.favourites.map((favourite, index) => {
             return <Favouritebar key={index} city={favourite} />
           })
+        }
+        {
+          !cookies.favourites && <Box className="glass" width={{ xs: '96vw', sm: '300px' }} sx={{ my: { xs: 3,xl: 5 } }} margin='auto'>
+          <Typography fontSize={{ xs: 20 }} textAlign={'center'} p={1} >You don't have any favourites.</Typography>
+        </Box>
         }
       </Box>
     </Background>
